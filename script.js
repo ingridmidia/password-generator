@@ -23,21 +23,6 @@ var uppercaseCharacters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"
 var numberCharacters = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var specialCharacters = [" ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]","^", "_", "`", "{", "|", "}", "~"];
 
-function generatePassword() {
-  getLength();
-  askLowercase();
-  askUppercase();
-  askNumber();
-  askSpecialCharacters();
-  validateInput();
-
-  console.log(passwordLength);
-  console.log(containsLowercase);
-  console.log(containsUppercase);
-  console.log(containsNumber);
-  console.log(containsSpecialCharacters);
-}
-
 function getLength() {
   passwordLength = prompt("Type the number of characters your password needs to have:");
 
@@ -47,25 +32,22 @@ function getLength() {
   } 
 }
 
-function askLowercase() {
+function getCharactersType() {
   containsLowercase = confirm("Do you want to include lowercase characters?");
-}
-
-function askUppercase() {
   containsUppercase = confirm("Do you want to include uppercase characters?");
-}
-
-function askNumber() {
   containsNumber = confirm("Do you want to include numbers?");
-}
-
-function askSpecialCharacters() {
   containsSpecialCharacters = confirm("Do you want to include special characters?");
 }
 
 function validateInput() {
   if (!containsLowercase && !containsUppercase && !containsNumber && !containsSpecialCharacters) {
     alert("You must choose at least one type of characters");
-    generatePassword();
-  }  
+    getCharactersType();
+  } 
+}
+
+function generatePassword() {
+  getLength();
+  getCharactersType();
+  validateInput();
 }
