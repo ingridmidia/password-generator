@@ -21,6 +21,7 @@ var containsSpecialCharacters;
 
 function getLength() {
   passwordLength = prompt("Type the number of characters your password needs to have:");
+  passwordLength = parseInt(passwordLength);
 
   if ((passwordLength < 8) || (passwordLength > 128)) {
     alert("You password needs to have at least 8 characters and no more than 128 characters");
@@ -62,4 +63,14 @@ function generatePassword() {
   } if (containsSpecialCharacters) {
     possibleCharacters = possibleCharacters.concat(specialCharacters);
   }
+
+  var password = "";
+
+  for (var i = 0; i < passwordLength; i++) {
+    password = password.concat(possibleCharacters[Math.floor(Math.random() * possibleCharacters.length)]);
+  }
+
+  validatePassword(password);
+
+  return password;
 }
